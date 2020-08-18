@@ -30,9 +30,11 @@
     "prepublishOnly": "yarn validate && yarn build"
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@types/jest": "26.0.10",
-    "libton-script": "0.12.7",
     "husky": "4.2.5",
+    "libton-script": "0.12.7",
     "lint-staged": "10.2.11"
   }
 }
