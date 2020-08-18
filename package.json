@@ -49,6 +49,7 @@
     "standard-version": "^9.0.0"
   },
   "dependencies": {
-    "glob": "^7.1.6"
+    "glob": "^7.1.6",
+    "precinct": "^6.3.1"
   }
 }
