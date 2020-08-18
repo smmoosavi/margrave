@@ -1,0 +1,38 @@
+{
+  "name": "margrave",
+  "description": "maintain the defense of borders of modules",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "lib/margrave.js",
+  "unpkg": "dist/margrave.js",
+  "module": "es/margrave.js",
+  "typings": "./index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "bin",
+    "src",
+    "index.d.ts",
+    "tsdoc-metadata.json"
+  ],
+  "bin": {
+    "margrave": "bin/margrave.js"
+  },
+  "scripts": {
+    "build": "libton-script build",
+    "build:doc": "libton-script doc",
+    "test": "libton-script test --coverage --verbose",
+    "lint": "libton-script lint",
+    "format": "libton-script format",
+    "format:check": "libton-script format --check",
+    "validate": "libton-script lint && libton-script format --check && libton-script test --coverage --verbose",
+    "prepublishOnly": "yarn validate && yarn build"
+  },
+  "devDependencies": {
+    "@types/jest": "26.0.10",
+    "libton-script": "0.12.7",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11"
+  }
+}
