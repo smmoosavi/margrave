@@ -7,6 +7,13 @@
 
 maintain the defense of borders of modules
 
+<!-- toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+
+<!-- tocstop -->
+
 ## Install
 
 ```bash
