@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - node
+install:
+  - yarn global add codecov
+  - yarn
+script:
+  - yarn lint
+  - yarn format:check
+  - yarn test --coverage --verbose
+  - yarn build
+  - git diff --exit-code --name-only
+  - codecov
+deploy:
+  provider: npm
+  email: se.mo.moosavi@gmail.com
+  api_key:
+    secure: E8z7j8GnnXE/I6VRBReipy1jTWpj0mlC1A9DhklA2lxR4xPS4c5GQnYx3UDNVqOEWe5IXrM8XAFH0jNrvZrWFhXcOYEUxkMKzcHQC+agv4Wpfyj/nYjKj266ivKEDCdSG1kk+RYAYhh4ji58km+jls7Yplwne6FbY/PFfuHYf7z9oou4wNCOJkIpbpW5Jf7rTVeJM91Tzhu7XJeelJHCeY85XMLNMQfqWY7CFq1FFIoViH5tfZBiRuT/E5a9ziCoJuldbKy5x7bRqNLEhrxPeINCGUdsxOKITVk4uUZR7zyYgrH05ynyqlf4vHyNDUttlvmmZvCF8lrH4XAzaLwHOy15/lZ41PwZzDEs5F9i1x3+8zqBdHH3QfAqL5/no8GGVaQFoCrHImUXOmejEhimVSlL+7uL2ZnjKKGZq0c42hyW606d4d7UMWwdfzSPuZl4vaRRr9dzfuC8HMlq4JU+MxFxWYFoqaQHmS+j4lygXopIvx7rdcftngX9A8f8uIO5l7Kl1KoHH+DkF+XWH82X/nft1mxM+Vd0cwJetgZd7emBEm6rnR4caCi05imlB1IaeRfxHXrkHPKUxJ6TpyBCbN9YPRPnZMCjni0uK9AHNGS/5cL8x8iYYrQoUTBFXTl2ytI5lLkc2kiQ4Fcwn4Z3Hk/qpGCmDqHIsbR4l0WdEWY=
+  on:
+    tags: true
+    repo: smmoosavi/margrave
+  skip_cleanup: 'true'
