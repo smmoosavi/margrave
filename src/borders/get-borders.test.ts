@@ -1,9 +1,9 @@
 import mockFs from 'mock-fs';
 import { getAppContext } from '../app/get-app-context';
 import { emptyRoot, otherRoot, tsProject } from './__fixtures__/roots';
-import { getIndexFiles } from './get-index-files';
+import { getBorders } from './get-borders';
 
-describe('get-all-index-files', () => {
+describe('get-borders', () => {
   afterAll(() => {
     mockFs.restore();
   });
@@ -16,7 +16,7 @@ describe('get-all-index-files', () => {
       });
       const ctx = getAppContext('/path-to-project/', 'src');
 
-      const files = getIndexFiles(ctx);
+      const files = getBorders(ctx);
       expect(files).toHaveLength(0);
     });
   });
@@ -28,8 +28,8 @@ describe('get-all-index-files', () => {
       });
       const ctx = getAppContext('/path-to-project/', 'src');
 
-      const files = getIndexFiles(ctx);
-      expect(files.sort()).toEqual(['src/index.ts'].sort());
+      const files = getBorders(ctx);
+      expect(files.sort()).toEqual(['src', 'src/page'].sort());
     });
   });
   describe('without root option', () => {
@@ -40,8 +40,8 @@ describe('get-all-index-files', () => {
       });
       const ctx = getAppContext('/path-to-project/');
 
-      const files = getIndexFiles(ctx);
-      expect(files.sort()).toEqual(['src/index.ts', 'other/index.ts'].sort());
+      const files = getBorders(ctx);
+      expect(files.sort()).toEqual(['src', 'other', 'src/page'].sort());
     });
   });
 });
