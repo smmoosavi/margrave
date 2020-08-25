@@ -1,15 +1,15 @@
 import { getAppContext } from '../app/get-app-context';
+import { getAbsoluteFilePath } from './get-absolute-file-path';
 import { getFileContext } from './get-file-context';
-import { getFilePath } from './get-file-path';
 
-describe('get-file-path', () => {
+describe('get-absolute-file-path', () => {
   it('should returns full file path', () => {
     const ctx = getFileContext(
       getAppContext('/path-to-project/', 'src'),
       'src/index.ts',
     );
-    const filePath = getFilePath(ctx);
-    expect(filePath).toBe('src/index.ts');
+    const filePath = getAbsoluteFilePath(ctx);
+    expect(filePath).toBe('/path-to-project/src/index.ts');
   });
   describe('without root', () => {
     it('should returns full file path', () => {
@@ -17,8 +17,8 @@ describe('get-file-path', () => {
         getAppContext('/path-to-project/'),
         'index.ts',
       );
-      const filePath = getFilePath(ctx);
-      expect(filePath).toBe('index.ts');
+      const filePath = getAbsoluteFilePath(ctx);
+      expect(filePath).toBe('/path-to-project/index.ts');
     });
   });
 });
