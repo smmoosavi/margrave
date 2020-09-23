@@ -1,7 +1,7 @@
 {
   "name": "margrave",
   "description": "maintain the defense of borders of modules",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "lib/margrave.js",
   "unpkg": "dist/margrave.js",
