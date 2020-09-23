@@ -46,20 +46,20 @@ src
 |-- app.tsx
 |-- pages
 |   |-- index.ts
-|   `-- PageA.tsx
+|   `-- Page.tsx
 `-- user
     |-- index.ts
     |-- type.ts
     `-- User.tsx
 ```
 
-| file                  | import statement |      allowed       |
-| --------------------- | ---------------- | :----------------: |
-| `src/pages/PageA.tsx` | `src/user`       | :heavy_check_mark: |
-| `src/pages/PageA.tsx` | `../user`        |        :x:         |
-| `src/pages/PageA.tsx` | `src/user/User`  |        :x:         |
-| `src/pages/PageA.tsx` | `src/user/type`  |        :x:         |
-| `src/user/User.tsx`   | `./type`         | :heavy_check_mark: |
-| `src/user/User.tsx`   | `src/user/type`  |        :x:         |
-| `src/user/User.tsx`   | `src/user`       |        :x:         |
-| `src/user/User.tsx`   | `.`              |        :x:         |
+| file                 | import statement |      allowed       |
+| -------------------- | ---------------- | :----------------: |
+| `src/pages/Page.tsx` | `src/user`       | :heavy_check_mark: |
+| `src/pages/Page.tsx` | `src/user/type`  |        :x:         |
+| `src/pages/Page.tsx` | `../user`        |        :x:         |
+| `src/pages/Page.tsx` | `../user/type`   |        :x:         |
+| `src/user/User.tsx`  | `./type`         | :heavy_check_mark: |
+| `src/user/User.tsx`  | `.`              |        :x:         |
+| `src/user/User.tsx`  | `src/user/type`  |        :x:         |
+| `src/user/User.tsx`  | `src/user`       |        :x:         |
