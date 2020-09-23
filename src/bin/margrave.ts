@@ -1,3 +1,3 @@
-import { Margrave } from '..';
+import { margrave } from '..';
 
-console.log(Margrave());
+margrave({ nodePath: process.cwd(), root: 'src' });
