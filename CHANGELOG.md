@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+### [0.1.1](https://github.com/smmoosavi/margrave/compare/v0.1.0...v0.1.1) (2020-09-23)
+
+### Bug Fixes
+
+- add more checks ([#4](https://github.com/smmoosavi/margrave/issues/4)) ([92645fb](https://github.com/smmoosavi/margrave/commit/92645fbe463fd8558188a8a83978737141e5d9f4))
+
+### Documentations
+
+- update readme ([#2](https://github.com/smmoosavi/margrave/issues/2)) ([a642c55](https://github.com/smmoosavi/margrave/commit/a642c55216da8fe22557ad2d2b2c91f714f06bcd))
+
 ## [0.1.0](https://github.com/smmoosavi/margrave/compare/v0.0.1...v0.1.0) (2020-09-23)
 
 ### Features
