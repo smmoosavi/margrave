@@ -3,6 +3,21 @@ import { Message } from './message';
 
 export function logMessage(message: Message) {
   switch (message.type) {
+    case 'invalid-border-import': {
+      console.log(
+        chalk.yellow(
+          `    invalid border import: ${chalk.red.bold(
+            message.dependency,
+          )} -> ${chalk.green.bold(
+            message.correctDependency === null
+              ? ' ?'
+              : message.correctDependency,
+          )}`,
+        ),
+      );
+      return;
+    }
+
     case 'invalid-absolute-import': {
       console.log(
         chalk.yellow(

@@ -2,6 +2,7 @@ import { DependenciesContext } from '../dependencies/dependencies-context';
 import { getFileContext } from '../files/get-file-context';
 import {
   createInvalidAbsoluteImportMessage,
+  createInvalidBorderImportMessage,
   createInvalidRelativeImportMessage,
 } from '../message/message';
 import { Store } from '../store/store';
@@ -17,20 +18,32 @@ export function checkDependency(store: Store, ctx: DependenciesContext) {
   }
 
   const border = getBorder(store, ctx);
-  const dependencyFile = resolveDependency(ctx);
-  const dependencyCtx = getFileContext(ctx, dependencyFile);
+  const resolvedDependency = resolveDependency(ctx);
+  const dependencyCtx = getFileContext(ctx, resolvedDependency);
   const dependencyBorder = getBorder(store, dependencyCtx);
-  if (dependencyType === 'absolute' && border === dependencyBorder && border) {
-    const relativeDependency = getRelativeDependency(ctx);
-    store.addMessage(
-      createInvalidAbsoluteImportMessage(ctx, relativeDependency),
-    );
+  if (resolvedDependency === border) {
+    store.addMessage(createInvalidBorderImportMessage(ctx, null));
+    return;
   }
-  if (
-    dependencyType === 'relative' &&
-    border !== dependencyBorder &&
-    dependencyBorder
-  ) {
-    store.addMessage(createInvalidRelativeImportMessage(ctx, dependencyBorder));
+  if (dependencyType === 'absolute') {
+    if (border && border === dependencyBorder) {
+      const relativeDependency = getRelativeDependency(ctx);
+      store.addMessage(
+        createInvalidAbsoluteImportMessage(ctx, relativeDependency),
+      );
+      return;
+    }
+    if (dependencyBorder && ctx.dependency !== dependencyBorder) {
+      store.addMessage(
+        createInvalidAbsoluteImportMessage(ctx, dependencyBorder),
+      );
+    }
+  }
+  if (dependencyType === 'relative') {
+    if (dependencyBorder && border !== dependencyBorder) {
+      store.addMessage(
+        createInvalidRelativeImportMessage(ctx, dependencyBorder),
+      );
+    }
   }
 }
