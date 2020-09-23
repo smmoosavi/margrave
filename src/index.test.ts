@@ -1,7 +1,7 @@
-import { Margrave } from './index';
+import { margrave } from './index';
 
-describe('Margrave', () => {
-  it('should return margrave', () => {
-    expect(Margrave()).toBe('margrave');
+describe('margrave', () => {
+  it('should be defined', () => {
+    expect(margrave).toBeDefined();
   });
 });
